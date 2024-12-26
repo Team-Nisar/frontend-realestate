@@ -1,282 +1,120 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import "../../styles/Header.css";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
-  const [user, setUser] = useState(null); // User data (null if not logged in)
-  const [buyDropdownOpen, setBuyDropdownOpen] = useState(false); // State for Buy dropdown
-  const [rentDropdownOpen, setRentDropdownOpen] = useState(false); // State for Rent dropdown
-  const [mobileBuyDropdownOpen, setMobileBuyDropdownOpen] = useState(false); // Mobile Buy dropdown
-  const [mobileRentDropdownOpen, setMobileRentDropdownOpen] = useState(false); // Mobile Rent dropdown
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggler for small screens
+  const [activeAccordion, setActiveAccordion] = useState(null); // Active accordion index
 
-  const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
+  const menuItems = [
+    {
+      title: "Properties for Sale",
+      links: [
+        "Property in Mumbai",
+        "Property in Delhi",
+        "Property in Noida",
+        "Property in Gurgaon",
+        "Property in Pune",
+        "Property in Bangalore",
+      ],
+    },
+    {
+      title: "Apartments / Flats",
+      links: [
+        "Flats in Mumbai",
+        "Flats in Delhi",
+        "Flats in Noida",
+        "Flats in Gurgaon",
+        "Flats in Pune",
+        "Flats in Bangalore",
+      ],
+    },
+    {
+      title: "Independent Houses",
+      links: [
+        "Houses in Mumbai",
+        "Houses in Delhi",
+        "Houses in Noida",
+        "Houses in Gurgaon",
+        "Houses in Pune",
+        "Houses in Bangalore",
+      ],
+    },
+    {
+      title: "Builder Floors",
+      links: [
+        "Builder Floor in Mumbai",
+        "Builder Floor in Delhi",
+        "Builder Floor in Noida",
+        "Builder Floor in Gurgaon",
+        "Builder Floor in Pune",
+        "Builder Floor in Bangalore",
+      ],
+    },
+  ];
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-    setMenuOpen(false); // Close the menu after selection
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
   };
-
-  const handleLogin = () => {
-    // Call your login API and set the user data
-    const mockUserData = {
-      name: 'John Doe',
-      // Other user data can be fetched here
-    };
-    setUser(mockUserData);
-  };
-
-  const handleLogout = () => {
-    // Handle logout
-    setUser(null);
-  };
-
-  useEffect(() => {
-    // If there's any existing session, you can fetch user data here
-    // Example:
-    // fetch('/api/getUser')
-    //   .then(res => res.json())
-    //   .then(data => setUser(data))
-  }, []);
 
   return (
-    <header className="bg-[#213555] text-white p-4">
-      <div className="flex justify-between items-center">
-        <div className="text-2xl font-bold">RealEstate</div>
-        <div className="hidden md:flex space-x-6">
-          <a
-            href="#home"
-            onClick={() => handleLinkClick('home')}
-            className={`${activeLink === 'home' ? 'text-yellow-300' : ''}`}
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            onClick={() => handleLinkClick('about')}
-            className={`${activeLink === 'about' ? 'text-yellow-300' : ''}`}
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            onClick={() => handleLinkClick('contact')}
-            className={`${activeLink === 'contact' ? 'text-yellow-300' : ''}`}
-          >
-            Contact
-          </a>
-          <div
-            className="relative"
-            onMouseEnter={() => setBuyDropdownOpen(true)}
-            onMouseLeave={() => setBuyDropdownOpen(false)}
-          >
-            <button className="text-white hover:text-yellow-300 px-4 py-2 rounded flex items-center">
-              Buy
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {buyDropdownOpen && (
-              <div className="absolute mt-2 bg-[#213555] text-white rounded shadow-lg w-40">
-                {cities.map((city, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    onClick={() => handleLinkClick(city)}
-                    className="block px-4 py-2 hover:bg-gray-700"
-                  >
-                    {city}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-          <div
-            className="relative"
-            onMouseEnter={() => setRentDropdownOpen(true)}
-            onMouseLeave={() => setRentDropdownOpen(false)}
-          >
-            <button className="text-white hover:text-yellow-300 px-4 py-2 rounded flex items-center">
-              Rent
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {rentDropdownOpen && (
-              <div className="absolute mt-2 bg-[#213555] text-white rounded shadow-lg w-40">
-                {cities.map((city, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    onClick={() => handleLinkClick(city)}
-                    className="block px-4 py-2 hover:bg-gray-700"
-                  >
-                    {city}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+    <header className="header">
+      <div className="container">
+        <div className="logo">RealEstate</div>
+        {/* Navigation */}
+        <nav>
+          {/* Mega Menu for Large Screens */}
+          <ul className={`mega-menu ${isMenuOpen ? "open" : ""}`}>
+            {menuItems.map((item, index) => (
+              <li key={index} className="menu-item">
+                <span>{item.title}</span>
+                <div className="dropdown">
+                  {item.links.map((link, idx) => (
+                    <a href="/" key={idx}>
+                      {link}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
 
-        {/* Conditional rendering for login/signup or user icon */}
-        <div className="flex items-center space-x-4">
-          {user ? (
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-yellow-300 text-white flex justify-center items-center font-semibold">
-                {user.name.charAt(0)} {/* Show first letter of user's name */}
-              </div>
-              <span>{user.name}</span>
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 text-white px-4 py-2 rounded"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            <>
-              <button
-                onClick={handleLogin}
-                className="bg-green-600 text-white px-4 py-2 rounded"
-              >
-                Login
-              </button>
-              <button
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-              >
-                Sign Up
-              </button>
-            </>
-          )}
-        </div>
+          {/* Accordion Menu for Small Screens */}
+          <ul className={`accordion-menu ${isMenuOpen ? "open" : ""}`}>
+            {menuItems.map((item, index) => (
+              <li key={index} className="accordion-item">
+                <button
+                  className="accordion-title"
+                  onClick={() => toggleAccordion(index)}
+                >
+                  {item.title}
+                </button>
+                <div
+                  className={`accordion-content ${
+                    activeAccordion === index ? "active" : ""
+                  }`}
+                >
+                  {item.links.map((link, idx) => (
+                    <a href="/" key={idx}>
+                      {link}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        <button
-          className="md:hidden p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
+        {/* Controls */}
+        <div className="controls">
+          <button className="login-btn">Login</button>
+          <button
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            ☰
+          </button>
+        </div>
       </div>
-
-      {menuOpen && (
-        <div className="md:hidden flex flex-col space-y-4 mt-4">
-          <a
-            href="#home"
-            onClick={() => handleLinkClick('home')}
-            className={`${activeLink === 'home' ? 'text-yellow-300' : ''}`}
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            onClick={() => handleLinkClick('about')}
-            className={`${activeLink === 'about' ? 'text-yellow-300' : ''}`}
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            onClick={() => handleLinkClick('contact')}
-            className={`${activeLink === 'contact' ? 'text-yellow-300' : ''}`}
-          >
-            Contact
-          </a>
-          <div
-            className="relative"
-            onClick={() => setMobileBuyDropdownOpen(!mobileBuyDropdownOpen)}
-          >
-            <button className="text-white hover:text-yellow-300 px-4 py-2 rounded flex items-center">
-              Buy
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {mobileBuyDropdownOpen && (
-              <div className="absolute mt-2 bg-[#213555] text-white rounded shadow-lg w-40">
-                {cities.map((city, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    onClick={() => handleLinkClick(city)}
-                    className="block px-4 py-2 hover:bg-gray-700"
-                  >
-                    {city}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-          <div
-            className="relative"
-            onClick={() => setMobileRentDropdownOpen(!mobileRentDropdownOpen)}
-          >
-            <button className="text-white hover:text-yellow-300 px-4 py-2 rounded flex items-center">
-              Rent
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {mobileRentDropdownOpen && (
-              <div className="absolute mt-2 bg-[#213555] text-white rounded shadow-lg w-40">
-                {cities.map((city, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    onClick={() => handleLinkClick(city)}
-                    className="block px-4 py-2 hover:bg-gray-700"
-                  >
-                    {city}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </header>
   );
 };

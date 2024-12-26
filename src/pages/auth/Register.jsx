@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Otp from './Otp';
-import '../../styles/Login.css';
+import '../../styles/Register.css';
 
-const Login = () => {
+const Register = () => {
   const [step, setStep] = useState(1);
   const [userType, setUserType] = useState('Individual');
   const [formData, setFormData] = useState({ number: '', country: '+91' });
@@ -21,10 +21,10 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="register-container">
       {step === 1 && (
-        <div className="login-step-one">
-          <h2>Login</h2>
+        <div className="register-step-one">
+          <h2>Register</h2>
           <div className="radio-buttons">
             <label>
               <input
@@ -70,10 +70,10 @@ const Login = () => {
         </div>
       )}
       {step === 2 && (
-        <Otp type="Signin" number={`${formData.country}${formData.number}`} />
+        <Otp type="Signup" number={`${formData.country}${formData.number}`} />
       )}
     </div>
   );
 };
 
-export default Login;
+export default Register;

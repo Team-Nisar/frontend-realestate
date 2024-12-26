@@ -1,0 +1,145 @@
+/* Base Styling */
+.header {
+  background-color: #000;
+  color: #fff;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Mega Menu (Large Screens) */
+.mega-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+  margin-right: 20px;
+}
+
+.menu-item span {
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  color: #000;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.menu-item:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown a:hover {
+  color: #007bff;
+}
+
+/* Accordion Menu (Small Screens) */
+.accordion-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #444;
+}
+
+.accordion-title {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion-content {
+  display: none;
+  background: #222;
+  padding: 10px;
+}
+
+.accordion-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.accordion-content a:hover {
+  color: #007bff;
+}
+
+.accordion-content.active {
+  display: block;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .mega-menu {
+    display: none;
+  }
+
+  .accordion-menu {
+    display: block;
+  }
+
+  .menu.open .accordion-menu {
+    display: block;
+  }
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
