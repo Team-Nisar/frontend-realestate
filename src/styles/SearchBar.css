@@ -1,0 +1,110 @@
+/* Main container for the search bar */
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.searchbar-card {
+  background-color: #3e5879;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-input {
+  margin-right: 10px;
+}
+
+.category-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.active-btn {
+  background-color: #ff4c4c;
+  color: white;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-nearme {
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  background-color: #ff4c4c;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .searchbar-card {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .category-buttons {
+    flex-direction: column;
+  }
+}

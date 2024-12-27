@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Otp from './Otp';
 import '../../styles/Register.css';
+import Layout from '../../components/Layout/Layout';
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -21,7 +22,8 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <Layout title={'Register'}>
+      <div className="register-container">
       {step === 1 && (
         <div className="register-step-one">
           <h2>Register</h2>
@@ -73,6 +75,7 @@ const Register = () => {
         <Otp type="Signup" number={`${formData.country}${formData.number}`} />
       )}
     </div>
+    </Layout>
   );
 };
 

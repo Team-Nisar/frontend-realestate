@@ -4,6 +4,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/user/Dashboard';
 import HomePage from './pages/HomePage';
+import HotSellingPage from './pages/HotSellingPage';
 
 const App = () => {
   const isAuthenticated = localStorage.getItem('token');
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/hotselling" element={<HotSellingPage/>}/>
           <Route
             path="/dashboard"
             element={
@@ -27,7 +29,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </Router>

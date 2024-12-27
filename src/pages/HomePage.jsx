@@ -2,15 +2,13 @@ import React from 'react'
 import Layout from '../components/Layout/Layout'
 import SearchBar from '../components/Searchbar'
 import HeroSection from '../components/HeroSection'
-import HotSellingProperties from '../components/HotSelling'
+import HotSellingPage from './HotSellingPage'
 
 const HomePage = () => {
   return (
     <Layout title={"HomePage"}>
       <div>
-        <HeroSection/>
-        <SearchBar/>
-        <HotSellingProperties/>
+        <HotSellingPage/>
       </div>
     </Layout>
   )

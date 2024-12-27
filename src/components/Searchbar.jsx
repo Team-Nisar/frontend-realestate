@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/SearchBar.css';
 
 const SearchBar = ({ onSearch }) => {
   const [type, setType] = useState('Buy');
@@ -8,6 +9,7 @@ const SearchBar = ({ onSearch }) => {
   const [city, setCity] = useState('');
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
+  const [rooms, setRooms] = useState('');
   const [cities, setCities] = useState([]);
 
   const categories = ['Plots', 'PG', 'Home', 'Flats', 'Villa', 'Office'];
@@ -46,120 +48,135 @@ const SearchBar = ({ onSearch }) => {
       city,
       minBudget,
       maxBudget,
+      rooms,
     };
     onSearch(searchParams);
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center relative z-20">
-      <div className="bg-[#3e5879] shadow-lg rounded-lg p-6 max-w-5xl mx-auto">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* First Row: Type and Property Categories */}
-          <div className="flex flex-wrap items-center justify-center space-x-4">
-            {/* Type Selector */}
-            {['Buy', 'Rent'].map((option) => (
-              <button
-                key={option}
-                type="button"
-                onClick={() => setType(option)}
-                className={`px-6 py-2 rounded-lg text-sm font-medium ${
-                  type === option ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-700'
-                } hover:bg-red-400 hover:text-white`}
-              >
-                {option}
-              </button>
-            ))}
+    <div className="searchbar-container">
+      <div className="searchbar-card">
+        <form onSubmit={handleSubmit} className="search-form">
+          {/* Type and Property Categories */}
+          <div className="form-row">
+            <div className="radio-buttons">
+              {['Buy', 'Rent'].map((option) => (
+                <label key={option} className="radio-label">
+                  <input
+                    type="radio"
+                    name="type"
+                    value={option}
+                    checked={type === option}
+                    onChange={() => setType(option)}
+                    className="radio-input"
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
 
-            {/* Property Categories */}
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setPropertyCategory(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                  propertyCategory === category
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                } hover:bg-blue-400 hover:text-white`}
-              >
-                {category}
-              </button>
-            ))}
+            <div className="category-buttons">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setPropertyCategory(category)}
+                  className={`btn ${propertyCategory === category ? 'active-btn' : ''}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Second Row: Search Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Filters */}
+          <div className="form-row">
             {/* Location */}
-            <div className="flex items-center space-x-2">
+            <div className="input-group">
               <input
-                id="location"
                 type="text"
                 placeholder="Enter location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="flex-grow border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
               />
-              <button
-                type="button"
-                onClick={handleGetLocation}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-              >
+              <button type="button" onClick={handleGetLocation} className="btn-nearme">
                 Near Me
               </button>
             </div>
 
             {/* City */}
-            <select
-              id="city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select City</option>
-              {cities.map((c) => (
-                <option key={c.id} value={c.name}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-
-            {/* Budget */}
-            <div className="flex space-x-2">
+            <div className="input-group">
               <select
-                id="minBudget"
-                value={minBudget}
-                onChange={(e) => setMinBudget(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="input"
               >
-                <option value="">Min Budget</option>
-                {[50000, 100000, 200000].map((budget) => (
-                  <option key={budget} value={budget}>
-                    {budget}
-                  </option>
-                ))}
-              </select>
-              <select
-                id="maxBudget"
-                value={maxBudget}
-                onChange={(e) => setMaxBudget(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">Max Budget</option>
-                {[100000, 300000, 500000].map((budget) => (
-                  <option key={budget} value={budget}>
-                    {budget}
+                <option value="">Select City</option>
+                {cities.map((c) => (
+                  <option key={c.id} value={c.name}>
+                    {c.name}
                   </option>
                 ))}
               </select>
             </div>
+
+            {/* Budget */}
+            {(propertyCategory === 'Plots' || type === 'Buy') && (
+              <>
+                <div className="input-group">
+                  <select
+                    value={minBudget}
+                    onChange={(e) => setMinBudget(e.target.value)}
+                    className="input"
+                  >
+                    <option value="">Min Budget</option>
+                    {[50000, 100000, 200000].map((budget) => (
+                      <option key={budget} value={budget}>
+                        {budget}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="input-group">
+                  <select
+                    value={maxBudget}
+                    onChange={(e) => setMaxBudget(e.target.value)}
+                    className="input"
+                  >
+                    <option value="">Max Budget</option>
+                    {[100000, 300000, 500000].map((budget) => (
+                      <option key={budget} value={budget}>
+                        {budget}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            )}
+
+            {/* Rooms for Home/Flats/Villa */}
+            {(propertyCategory === 'Home' || propertyCategory === 'Flats' || propertyCategory === 'Villa') && (
+              <div className="input-group">
+                <select
+                  value={rooms}
+                  onChange={(e) => setRooms(e.target.value)}
+                  className="input"
+                >
+                  <option value="">Select Rooms</option>
+                  {[1, 2, 3, 4, 5].map((room) => (
+                    <option key={room} value={room}>
+                      {room} Room(s)
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-red-500 text-white px-6 py-2 rounded-lg text-lg font-medium hover:bg-red-600"
-            >
+          <div className="submit-btn">
+            <button type="submit" className="btn-submit">
               Search
             </button>
           </div>

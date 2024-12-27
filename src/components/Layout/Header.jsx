@@ -1,121 +1,151 @@
-import React, { useState } from "react";
-import "../../styles/Header.css";
+import React, { useState, useEffect } from 'react';
+import '../../styles/Header.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggler for small screens
-  const [activeAccordion, setActiveAccordion] = useState(null); // Active accordion index
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+  const navigate = useNavigate();
 
-  const menuItems = [
-    {
-      title: "Properties for Sale",
-      links: [
-        "Property in Mumbai",
-        "Property in Delhi",
-        "Property in Noida",
-        "Property in Gurgaon",
-        "Property in Pune",
-        "Property in Bangalore",
-      ],
-    },
-    {
-      title: "Apartments / Flats",
-      links: [
-        "Flats in Mumbai",
-        "Flats in Delhi",
-        "Flats in Noida",
-        "Flats in Gurgaon",
-        "Flats in Pune",
-        "Flats in Bangalore",
-      ],
-    },
-    {
-      title: "Independent Houses",
-      links: [
-        "Houses in Mumbai",
-        "Houses in Delhi",
-        "Houses in Noida",
-        "Houses in Gurgaon",
-        "Houses in Pune",
-        "Houses in Bangalore",
-      ],
-    },
-    {
-      title: "Builder Floors",
-      links: [
-        "Builder Floor in Mumbai",
-        "Builder Floor in Delhi",
-        "Builder Floor in Noida",
-        "Builder Floor in Gurgaon",
-        "Builder Floor in Pune",
-        "Builder Floor in Bangalore",
-      ],
-    },
-  ];
+  useEffect(() => {
+    // Simulate API call to check login status
+    axios.get('/api/auth/status')
+      .then(response => {
+        if (response.data.loggedIn) {
+          setIsLoggedIn(true);
+          setUserName(response.data.userName);
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch(error => {
+        console.error('Error checking login status:', error);
+      });
+  }, []);
 
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleProfile = () => {
+    navigate('/profile');
   };
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="logo">RealEstate</div>
-        {/* Navigation */}
-        <nav>
-          {/* Mega Menu for Large Screens */}
-          <ul className={`mega-menu ${isMenuOpen ? "open" : ""}`}>
-            {menuItems.map((item, index) => (
-              <li key={index} className="menu-item">
-                <span>{item.title}</span>
-                <div className="dropdown">
-                  {item.links.map((link, idx) => (
-                    <a href="/" key={idx}>
-                      {link}
-                    </a>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
+    <nav className="navbar">
+      {/* Toggle Button */}
+      <button className="menu-toggle" aria-label="Toggle Menu" onClick={toggleMenu}>
+        ☰
+      </button>
 
-          {/* Accordion Menu for Small Screens */}
-          <ul className={`accordion-menu ${isMenuOpen ? "open" : ""}`}>
-            {menuItems.map((item, index) => (
-              <li key={index} className="accordion-item">
-                <button
-                  className="accordion-title"
-                  onClick={() => toggleAccordion(index)}
-                >
-                  {item.title}
-                </button>
-                <div
-                  className={`accordion-content ${
-                    activeAccordion === index ? "active" : ""
-                  }`}
-                >
-                  {item.links.map((link, idx) => (
-                    <a href="/" key={idx}>
-                      {link}
-                    </a>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Controls */}
-        <div className="controls">
-          <button className="login-btn">Login</button>
-          <button
-            className="menu-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            ☰
-          </button>
-        </div>
+    
+      <ul className={`menu ${menuOpen ? 'show' : ''}`}>
+        <li className="menu-item"><a href="#">Home</a></li>
+        <li className="menu-item dropdown">
+          <a href="#">Buy <span className="accordion">{menuOpen ? '-' : 'V'}</span></a>
+          {menuOpen ? (
+            <div className="dropdown-accordion">
+              <div className="accordion-section">
+                <p className="dropdown-heading">Properties For Sale</p>
+                <ul>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                </ul>
+              </div>
+              <div className="accordion-section">
+                <p className="dropdown-heading">Apartment/Flats</p>
+                <ul>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumbai</a></li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <ul className="dropdown-menu">
+              <div className="dropdown-column">
+                <p className="dropdown-heading">Properties For Sale</p>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+              </div>
+              <div className="dropdown-column">
+                <p className="dropdown-heading">Apartment/Flats</p>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+                <li><a href="#">Properties in Mumbai</a></li>
+              </div>
+            </ul>
+          )}
+        </li>
+        <li className="menu-item dropdown">
+          <a href="#">Rent</a>
+          {menuOpen ? (
+            <div className="dropdown-accordion">
+              <div className="accordion-section">
+                <p className="dropdown-heading">Heading</p>
+                <ul>
+                  <li><a href="#">Legal Assistance</a></li>
+                  <li><a href="#">Loan Services</a></li>
+                  <li><a href="#">Property Management</a></li>
+                </ul>
+              </div>
+              <div className="accordion-section">
+                <p className="dropdown-heading">Heading</p>
+                <ul>
+                  <li><a href="#">Legal Assistance</a></li>
+                  <li><a href="#">Loan Services</a></li>
+                  <li><a href="#">Property Management</a></li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <ul className="dropdown-menu">
+              <div className="dropdown-column">
+                <p className="dropdown-heading">Heading</p>
+                <li><a href="#">Legal Assistance</a></li>
+                <li><a href="#">Loan Services</a></li>
+                <li><a href="#">Property Management</a></li>
+              </div>
+              <div className="dropdown-column">
+                <p className="dropdown-heading">Heading</p>
+                <li><a href="#">Legal Assistance</a></li>
+                <li><a href="#">Loan Services</a></li>
+                <li><a href="#">Property Management</a></li>
+              </div>
+            </ul>
+          )}
+        </li>
+        <li className="menu-item"><a href="#">Contact</a></li>
+      </ul>
+        {/* Login/Profile Button */}
+      <div className="auth-section">
+        {isLoggedIn ? (
+          <>
+            <span className="user-name">Hello, {userName}</span>
+            <button className="profile-button" onClick={handleProfile}>Profile</button>
+          </>
+        ) : (
+          <button className="login-button" onClick={handleLogin}>Login</button>
+        )}
       </div>
-    </header>
+
+    </nav>
   );
 };
 

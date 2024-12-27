@@ -17,6 +17,7 @@
     "@types/react-helmet": "^6.1.11",
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
+    "aos": "^2.3.4",
     "axios": "^1.7.9",
     "framer-motion": "^11.15.0",
     "react": "^19.0.0",

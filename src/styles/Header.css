@@ -1,145 +1,198 @@
-/* Base Styling */
-.header {
-  background-color: #000;
-  color: #fff;
-  padding: 15px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Mega Menu (Large Screens) */
-.mega-menu {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative; /* Prevent overlapping issues */
 }
 
 .menu-item {
-  position: relative;
-  margin-right: 20px;
+    position: relative; /* Ensure dropdown positions are calculated from here */
+    margin-right: 20px;
 }
 
-.menu-item span {
-  cursor: pointer;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  color: #000;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-.menu-item:hover .dropdown {
-  display: block;
-}
-
-.dropdown a {
-  display: block;
-  padding: 5px 0;
-  text-decoration: none;
-  color: #000;
-}
-
-.dropdown a:hover {
-  color: #007bff;
-}
-
-/* Accordion Menu (Small Screens) */
-.accordion-menu {
-  display: none;
-  list-style: none;
-  padding: 0;
-}
-
-.accordion-item {
-  border-bottom: 1px solid #444;
-}
-
-.accordion-title {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  text-align: left;
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.accordion-content {
-  display: none;
-  background: #222;
-  padding: 10px;
-}
-
-.accordion-content a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.accordion-content a:hover {
-  color: #007bff;
-}
-
-.accordion-content.active {
-  display: block;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .mega-menu {
-    display: none;
-  }
-
-  .accordion-menu {
+.menu-item a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
     display: block;
-  }
+}
 
-  .menu.open .accordion-menu {
+.accordion {
+    color: aqua;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding-left: 10px;
+}
+
+.menu-item a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+.dropdown-heading {
+    color: aqua;
+    background-color: #333; /* Matches the navbar for a clean look */
+    padding: 10px;
+    font-weight: bold;
+    position: sticky; /* Keep the heading fixed while scrolling */
+    top: 0%; /* Stick to the top of the column */
+    z-index: 10; /* Ensure it stays above scrolling content */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    list-style: none;
+    position: absolute;
+    top: 100%; /* Dropdown appears below the menu item */
+    left: 0;
+    display: none; /* Hidden by default */
+    background-color: #444;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    max-height: 200px; /* Limit height for scrolling */
+    padding: 10px;
+}
+
+/* Dropdown columns */
+.dropdown-menu .dropdown-column {
+    flex: 10;
+    max-height: 200px; /* Limit height for individual column scrolling */
+    overflow-y: auto; /* Enable scrolling within each column */
+    margin-right: 10px;
+}
+
+.dropdown-menu .dropdown-column:last-child {
+    margin-right: 0; /* Remove margin for the last column */
+}
+
+.dropdown-menu .dropdown-column li {
+    margin: 5px;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 10px 15px;
+    white-space: nowrap;
     display: block;
-  }
 }
 
-/* Controls */
-.controls {
-  display: flex;
-  align-items: center;
+.dropdown-menu a:hover {
+    background-color: #555;
 }
 
-.login-btn {
-  background: #fff;
-  color: #000;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  margin-right: 10px;
+/* Hover effect for dropdown */
+.menu-item.dropdown:hover .dropdown-menu {
+    display: flex; /* Show dropdown when parent is hovered */
+}
+
+/* Scrollbar styles */
+.dropdown-menu .dropdown-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu .dropdown-column::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.dropdown-menu .dropdown-column::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
 .menu-toggle {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
+    display: none; /* Hidden by default */
+    background: none;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: auto; /* Align toggle to the left */
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.auth-section .user-name {
+    color: white;
+    margin-right: 10px;
+}
+
+.auth-section .login-button,
+.auth-section .profile-button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.auth-section .login-button:hover,
+.auth-section .profile-button:hover {
+    background-color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Hide the menu by default on small screens */
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%; /* Full width */
+        background-color: #333;
+        position: absolute;
+        top: 50px; /* Below the navbar */
+        left: 0;
+        z-index: 1000;
+    }
+
+    .accordion {
+        display: inline;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        font-size: 1.5em;
+        transform: translateY(-50%);
+    }
+
+    .menu.show {
+        display: flex; /* Show the menu when toggled */
+    }
+
+    .menu-item {
+        margin: 10px 0; /* Add spacing between items */
+    }
+
+    .menu-toggle {
+        display: block; /* Show toggle button on small screens */
+    }
+
+    .menu-item.dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .auth-section {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
 }
