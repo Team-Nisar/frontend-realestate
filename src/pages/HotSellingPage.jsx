@@ -97,6 +97,7 @@ const HotSellingPage = () => {
           <PropertyCard key={property.id} {...property} />
         ))}
       </div>
+      <br/><br/><br/>
     </div>
   );
 };
