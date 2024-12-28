@@ -1,10 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../../styles/Details.css';
 
 const Details = ({ formData, setFormData, submitDetails }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    submitDetails(); // Execute the parent submitDetails logic
+    navigate('/dashboard'); // Redirect to the dashboard
   };
 
   return (
@@ -49,7 +57,7 @@ const Details = ({ formData, setFormData, submitDetails }) => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="button" onClick={submitDetails}>
+        <button type="button" onClick={handleSubmit}>
           Submit
         </button>
       </form>
