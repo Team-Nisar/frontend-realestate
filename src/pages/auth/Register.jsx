@@ -42,67 +42,69 @@ const Register = () => {
   return (
     <Layout title={'Register'}>
       <div className="register-container">
-        {step === 1 && (
-          <div className="register-step-one">
-            <h2>Register</h2>
-            <div className="radio-buttons">
-              <label>
+        <div className="register-box">
+          {step === 1 && (
+            <div className="register-step-one">
+              <h2>Register</h2>
+              <div className="radio-buttons">
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="Individual"
+                    checked={userType === 'Individual'}
+                    onChange={() => setUserType('Individual')}
+                  />
+                  Individual
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="Agent"
+                    checked={userType === 'Agent'}
+                    onChange={() => setUserType('Agent')}
+                  />
+                  Agent
+                </label>
+              </div>
+              <div className="number-input">
+                <select
+                  name="country"
+                  value={formData.country}
+                  onChange={handleInputChange}
+                >
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  {/* Add more country codes if needed */}
+                </select>
                 <input
-                  type="radio"
-                  name="userType"
-                  value="Individual"
-                  checked={userType === 'Individual'}
-                  onChange={() => setUserType('Individual')}
+                  type="text"
+                  name="number"
+                  placeholder="Enter your mobile number"
+                  value={formData.number}
+                  onChange={handleInputChange}
                 />
-                Individual
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="userType"
-                  value="Agent"
-                  checked={userType === 'Agent'}
-                  onChange={() => setUserType('Agent')}
-                />
-                Agent
-              </label>
+              </div>
+              <button onClick={submitNumber}>Submit</button>
             </div>
-            <div className="number-input">
-              <select
-                name="country"
-                value={formData.country}
-                onChange={handleInputChange}
-              >
-                <option value="+91">🇮🇳 +91</option>
-                <option value="+1">🇺🇸 +1</option>
-                <option value="+44">🇬🇧 +44</option>
-                {/* Add more country codes if needed */}
-              </select>
-              <input
-                type="text"
-                name="number"
-                placeholder="Enter your mobile number"
-                value={formData.number}
-                onChange={handleInputChange}
-              />
-            </div>
-            <button onClick={submitNumber}>Submit</button>
-          </div>
-        )}
-        {step === 2 && (
-          <Otp
-            type="Signup"
-            number={`${formData.country}${formData.number}`}
-            onVerified={() => setStep(3)} // Proceed to the details step upon OTP verification
-          />
-        )}
-        {step === 3 && (
-          <Details
-            formData={formData}
-            setFormData={setFormData}
-            submitDetails={submitDetails}
-          />
-        )}
+          )}
+          {step === 2 && (
+            <Otp
+              type="Signup"
+              number={`${formData.country}${formData.number}`}
+              onVerified={() => setStep(3)} // Proceed to the details step upon OTP verification
+            />
+          )}
+          {step === 3 && (
+            <Details
+              formData={formData}
+              setFormData={setFormData}
+              submitDetails={submitDetails}
+            />
+          )}
+        </div>
       </div>
     </Layout>
   );

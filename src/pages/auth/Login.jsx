@@ -69,9 +69,9 @@ const Login = () => {
             />
           </div>
           <button onClick={submitNumber}>Submit</button>
+          <div>If You Are New Then Plase Register ....<a href='/register'>Click Here</a></div>
         </div>
       )}
-      <div>If You Are New Then Plase Register ....<a href='/register'>Click Here</a></div>
       {step === 2 && (
         <Otp type="Signin" number={`${formData.country}${formData.number}`} />
       )}

@@ -4,15 +4,24 @@ import '../styles/SearchBar.css';
 
 const SearchBar = ({ onSearch }) => {
   const [type, setType] = useState('Buy');
-  const [propertyCategory, setPropertyCategory] = useState('Plots');
+  const [propertyCategory, setPropertyCategory] = useState('Residential');
   const [location, setLocation] = useState('');
   const [city, setCity] = useState('');
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [rooms, setRooms] = useState('');
   const [cities, setCities] = useState([]);
+  const [selectedCommercialTypes, setSelectedCommercialTypes] = useState([]);
+  const [selectedResidentialTypes, setSelectedResidentialTypes] = useState([]);
 
-  const categories = ['Plots', 'PG', 'Home', 'Flats', 'Villa', 'Office'];
+  const commercialTypes = [
+    'Office Space', 'Shop', 'Land', 'Industrial Plot', 'Showroom',
+    'Office Space in IT/SEZ', 'Warehouse', 'Co-working Space'
+  ];
+
+  const residentialTypes = [
+    'Apartment', 'Plot', 'Builder Floor', 'Independent House', 'Villa', 'Penthouse'
+  ];
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -39,6 +48,23 @@ const SearchBar = ({ onSearch }) => {
     );
   };
 
+  const handlePropertyTypeChange = (e) => {
+    const { name, value, checked } = e.target;
+    if (name === 'commercial') {
+      setSelectedCommercialTypes((prevState) =>
+        checked
+          ? [...prevState, value]
+          : prevState.filter((item) => item !== value)
+      );
+    } else {
+      setSelectedResidentialTypes((prevState) =>
+        checked
+          ? [...prevState, value]
+          : prevState.filter((item) => item !== value)
+      );
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const searchParams = {
@@ -49,6 +75,8 @@ const SearchBar = ({ onSearch }) => {
       minBudget,
       maxBudget,
       rooms,
+      selectedCommercialTypes,
+      selectedResidentialTypes,
     };
     onSearch(searchParams);
   };
@@ -57,41 +85,60 @@ const SearchBar = ({ onSearch }) => {
     <div className="searchbar-container">
       <div className="searchbar-card">
         <form onSubmit={handleSubmit} className="search-form">
-          {/* Type and Property Categories */}
-          <div className="form-row">
-            <div className="radio-buttons">
-              {['Buy', 'Rent'].map((option) => (
-                <label key={option} className="radio-label">
-                  <input
-                    type="radio"
-                    name="type"
-                    value={option}
-                    checked={type === option}
-                    onChange={() => setType(option)}
-                    className="radio-input"
-                  />
-                  {option}
-                </label>
-              ))}
+          {/* First Row: Property Type & Category */}
+          <div className="search-row">
+            <div className="input-group">
+              <select value={type} onChange={(e) => setType(e.target.value)} className="input">
+                <option value="Buy">Buy</option>
+                <option value="Rent">Rent</option>
+              </select>
             </div>
+            <div className="input-group">
+              <select value={propertyCategory} onChange={(e) => setPropertyCategory(e.target.value)} className="input">
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+            {/* Commercial/Residential Property Types */}
+            {propertyCategory === 'Commercial' && (
+              <div className="checkbox-group">
+                {commercialTypes.map((type) => (
+                  <label key={type} className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="commercial"
+                      value={type}
+                      checked={selectedCommercialTypes.includes(type)}
+                      onChange={handlePropertyTypeChange}
+                      className="checkbox-input"
+                    />
+                    {type}
+                  </label>
+                ))}
+              </div>
+            )}
 
-            <div className="category-buttons">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setPropertyCategory(category)}
-                  className={`btn ${propertyCategory === category ? 'active-btn' : ''}`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+            {propertyCategory === 'Residential' && (
+              <div className="checkbox-group">
+                {residentialTypes.map((type) => (
+                  <label key={type} className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="residential"
+                      value={type}
+                      checked={selectedResidentialTypes.includes(type)}
+                      onChange={handlePropertyTypeChange}
+                      className="checkbox-input"
+                    />
+                    {type}
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Filters */}
-          <div className="form-row">
-            {/* Location */}
+          {/* Second Row: Location, City, Budget */}
+          <div className="search-row">
             <div className="input-group">
               <input
                 type="text"
@@ -100,74 +147,33 @@ const SearchBar = ({ onSearch }) => {
                 onChange={(e) => setLocation(e.target.value)}
                 className="input"
               />
+            </div>
+            <div className="input-group">
               <button type="button" onClick={handleGetLocation} className="btn-nearme">
                 Near Me
               </button>
             </div>
-
-            {/* City */}
             <div className="input-group">
-              <select
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="input"
-              >
+              <select value={city} onChange={(e) => setCity(e.target.value)} className="input">
                 <option value="">Select City</option>
                 {cities.map((c) => (
-                  <option key={c.id} value={c.name}>
-                    {c.name}
-                  </option>
+                  <option key={c.id} value={c.name}>{c.name}</option>
                 ))}
               </select>
             </div>
-
             {/* Budget */}
             {(propertyCategory === 'Plots' || type === 'Buy') && (
-              <>
-                <div className="input-group">
-                  <select
-                    value={minBudget}
-                    onChange={(e) => setMinBudget(e.target.value)}
-                    className="input"
-                  >
-                    <option value="">Min Budget</option>
-                    {[50000, 100000, 200000].map((budget) => (
-                      <option key={budget} value={budget}>
-                        {budget}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="input-group">
-                  <select
-                    value={maxBudget}
-                    onChange={(e) => setMaxBudget(e.target.value)}
-                    className="input"
-                  >
-                    <option value="">Max Budget</option>
-                    {[100000, 300000, 500000].map((budget) => (
-                      <option key={budget} value={budget}>
-                        {budget}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </>
-            )}
-
-            {/* Rooms for Home/Flats/Villa */}
-            {(propertyCategory === 'Home' || propertyCategory === 'Flats' || propertyCategory === 'Villa') && (
               <div className="input-group">
-                <select
-                  value={rooms}
-                  onChange={(e) => setRooms(e.target.value)}
-                  className="input"
-                >
-                  <option value="">Select Rooms</option>
-                  {[1, 2, 3, 4, 5].map((room) => (
-                    <option key={room} value={room}>
-                      {room} Room(s)
-                    </option>
+                <select value={minBudget} onChange={(e) => setMinBudget(e.target.value)} className="input">
+                  <option value="">Min Budget</option>
+                  {[50000, 100000, 200000].map((budget) => (
+                    <option key={budget} value={budget}>{budget}</option>
+                  ))}
+                </select>
+                <select value={maxBudget} onChange={(e) => setMaxBudget(e.target.value)} className="input">
+                  <option value="">Max Budget</option>
+                  {[100000, 300000, 500000].map((budget) => (
+                    <option key={budget} value={budget}>{budget}</option>
                   ))}
                 </select>
               </div>
@@ -176,9 +182,7 @@ const SearchBar = ({ onSearch }) => {
 
           {/* Submit Button */}
           <div className="submit-btn">
-            <button type="submit" className="btn-submit">
-              Search
-            </button>
+            <button type="submit" className="btn-submit">Search</button>
           </div>
         </form>
       </div>

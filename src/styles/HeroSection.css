@@ -1,6 +1,6 @@
 /* Hero Section Styles */
 .hero-section {
-  background: linear-gradient(135deg, #4CAF50, #1E8E3E); /* Green gradient background */
+  background: linear-gradient(135deg, #39f6ba, #1E8E3E); /* Green gradient background */
   color: white;
   padding: 4rem 2rem; /* Top/bottom padding */
   display: flex;
@@ -9,6 +9,8 @@
   align-items: center;
   position: relative;
   height: 60vh; /* Hero section takes up 60% of the viewport height */
+  z-index: 1; /* Ensure it's behind the navbar */
+  margin-top: auto; /* Added margin-top to prevent content from being hidden under navbar */
 }
 
 .hero-content {
@@ -17,6 +19,7 @@
 }
 
 .hero-title {
+  margin-top: 150px;
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -30,19 +33,29 @@
   line-height: 1.6;
 }
 
-.searchbar-container {
-  position: absolute;
-  bottom: -40px; /* Adjust search bar position */
-  left: 50%;
-  transform: translateX(-50%);
+/* Navbar Styles */
+.navbar {
+  position: fixed; /* Fixed positioning to stay at the top */
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #333; /* Dark background for navbar */
+  z-index: 10; /* High z-index to ensure it stays on top of the hero section */
 }
 
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Responsive Design for Hero Section */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2rem;
@@ -54,5 +67,12 @@
 
   .searchbar-container {
     width: 90%;
+  }
+
+  /* Adjusting the hero section height on smaller screens */
+  .hero-section {
+    height: auto; /* Allow content to flow on smaller screens */
+    padding: 3rem 2rem; /* Slightly less padding on smaller screens */
+    margin-top: 80px; /* Adjust margin-top for small screens if navbar is taller */
   }
 }

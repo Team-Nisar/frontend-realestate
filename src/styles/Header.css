@@ -53,7 +53,7 @@ body {
     font-weight: bold;
     position: sticky; /* Keep the heading fixed while scrolling */
     top: 0%; /* Stick to the top of the column */
-    z-index: 10; /* Ensure it stays above scrolling content */
+    z-index: 10;/*Ensure it stays above scrolling content */
 }
 
 /* Dropdown menu styles */

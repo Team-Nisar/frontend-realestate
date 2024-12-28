@@ -56,7 +56,7 @@ const Header = () => {
                 <ul>
                   <li><a href="#">Properties in Mumbai</a></li>
                   <li><a href="#">Properties in Mumbai</a></li>
-                  <li><a href="#">Properties in Mumbai</a></li>
+                  <li><a href="#">Properties in Mumb</a></li>
                   <li><a href="#">Properties in Mumbai</a></li>
                   <li><a href="#">Properties in Mumbai</a></li>
                 </ul>
