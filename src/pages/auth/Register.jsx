@@ -97,7 +97,7 @@ const Register = () => {
                 />
               </div>
               <button className='w-full flex gap-2 justify-center items-center bg-blue-600 text-white py-2.5 rounded-lg' onClick={submitNumber}>Submit <GoArrowRight size={20} /></button>
-              <div className='text-gray-600'>Already have an account, Please ....<a href='/register'>Click Here</a></div>
+              <div className='text-gray-600'>Already have an account, Please ....<a href='/login'>Click Here</a></div>
             </div>
           )}
           {step === 2 && (
