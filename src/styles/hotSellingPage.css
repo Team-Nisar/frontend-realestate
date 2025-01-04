@@ -4,19 +4,13 @@
   margin-top: 100px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #213555;
-}
-
 .city-buttons {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.city-buttons button {
+.city-buttons  {
   margin: 0 10px;
   padding: 10px 20px;
   border: none;
@@ -27,7 +21,7 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.city-buttons button.active {
+.city-buttons.active {
   background-color: #213555;
   color: white;
 }

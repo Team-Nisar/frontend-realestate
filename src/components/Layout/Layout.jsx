@@ -1,8 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Navbar from "../Navbar/Navbar"
 
 // Import your Header and Footer components
-import Header from "./Header";
+// import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ title, description, keywords, children }) => {
@@ -17,7 +18,7 @@ const Layout = ({ title, description, keywords, children }) => {
       </Helmet>
 
       {/* Page layout structure */}
-      <Header />
+      <Navbar/>
       <main
         style={{
           minHeight: "calc(100vh - 200px)",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../../styles/Otp.css';
+import { GoArrowRight } from "react-icons/go";
 import Layout from '../../components/Layout/Layout';
 
 const Otp = ({ type, number }) => {
@@ -40,11 +41,11 @@ const Otp = ({ type, number }) => {
   };
 
   return (
-      <div className="otp-container">
-        <h2>{type === 'Signin' ? 'Sign In' : 'Sign Up'}</h2>
-        <p>We have sent an OTP to {number}</p>
+      <div className="bg-white p-10 flex flex-col gap-3 rounded-2xl">
+        <h2 className='font-semibold text-2xl text-gray-800'>{type === 'Signin' ? 'Sign In' : 'Sign Up'}</h2>
+        <p className=' text-gray-600 text-sm font-semibold'>We have sent an OTP to {number}</p>
         
-        <div className="otp-input-container">
+        <div className="otp-input-container mt-5">
           {otp.map((digit, index) => (
             <input
               key={index}
@@ -54,13 +55,14 @@ const Otp = ({ type, number }) => {
               value={digit}
               onChange={(e) => handleOtpChange(e, index)}
               required
+              className='w-10 h-10 border-gray-400 text-gray-500 flex justify-center items-center text-lg'
             />
           ))}
         </div>
-        <div>If you didn't get the OTP then <a href='#'>Resend OTP</a></div>
+        <div className='text-gray-500'>If you didn't get the OTP then <a href='#'>Resend OTP</a></div>
 
-        <button onClick={handleOtpSubmit} disabled={loading}>
-          {loading ? 'Verifying...' : 'Submit OTP'}
+        <button className='w-full flex gap-2 justify-center items-center bg-green-600 text-white py-2.5 rounded-lg' onClick={handleOtpSubmit} disabled={loading}>
+          {loading ? 'Verifying...' : 'Submit OTP'}<GoArrowRight size={20} />
         </button>
       </div>
   );

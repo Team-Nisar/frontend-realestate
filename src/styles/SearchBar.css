@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   padding: 30px 10px;
-  background-color: #f4f7fb;
+  /* background-color: #f4f7fb; */
   margin-top: auto;
   color: black;
   min-height: auto;
@@ -11,12 +11,12 @@
 }
 
 .searchbar-card {
-  width: 100%;
-  max-width: 1000px; /* Adjust for compact design */
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* width: 100%; */
+  /* max-width: 1000px; Adjust for compact design */
+  /* padding: 20px; */
+  /* background-color: #fff; */
+  /* border-radius: 12px; */
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .search-form {
@@ -50,7 +50,7 @@ input, select {
   box-sizing: border-box;
 }
 
-button {
+/* button {
   padding: 8px;
   font-size: 14px;
   border: none;
@@ -59,17 +59,17 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #45a049;
-}
+} */
 
-.submit-btn{
+/* .submit-btn{
   align-items: center;
-}
+} */
 /* Submit Button */
-.btn-submit {
+/* .btn-submit {
   padding: 10px 20px;
   background-color: #007BFF;
   color: white;
@@ -79,7 +79,7 @@ button:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
-}
+} */
 
 .btn-submit:hover {
   background-color: #0056b3;
