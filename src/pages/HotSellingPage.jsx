@@ -257,7 +257,7 @@ const HotSellingPage = () => {
   };
 
   return (
-    <div className="bg-gray-900 px-5 text-center flex flex-col gap-10 justify-center items-center pt-10">
+    <div className="flex flex-col items-center justify-center gap-10 px-5 pt-10 text-center bg-gray-900">
       <h1 className="text-5xl font-bold">Hot Selling Properties</h1>
 
       <div className="flex flex-col justify-center w-[95%]">
@@ -279,17 +279,17 @@ const HotSellingPage = () => {
         </div>
 
         <div className="flex justify-center my-10">
-          <div className="slider-container px-10 w-screen">
+          <div className="w-screen px-10 slider-container">
             <Slider {...settings}>
               {filteredProperties.map((property) => (
-                <div key={property.id} className="flex gap-2 justify-evenly my-10 items-center">
+                <div key={property.id} className="flex items-center gap-2 my-10 justify-evenly">
                   <div className="w-[23rem] p-5 flex flex-col justify-center items-start rounded-3xl overflow-auto bg-gray-700">
                     <img
                       src={property.image}
                       className="w-[29rem] rounded-2xl mb-2 h-[15rem] cover"
                     />
-                    <div className="flex flex-col justify-center items-start">
-                      <h1 className="font-semibold text-xl leading-none">
+                    <div className="flex flex-col items-start justify-center">
+                      <h1 className="text-xl font-semibold leading-none">
                         {property.name}
                       </h1>
                       <p className="text-sm">{property.location}</p>
@@ -301,10 +301,10 @@ const HotSellingPage = () => {
                     <p className="text-sm">
                       {property.bedrooms} beds & {property.bathrooms} bathrooms
                     </p>
-                    <p className="flex justify-start py-1 text-blue-400 text-xs">
-                      <div className="flex justify-start gap-1 items-center">
+                    <p className="flex justify-start py-1 text-xs text-blue-400">
+                      <div className="flex items-center justify-start gap-1">
                         {property?.features?.map((feature, i) => (
-                            <p className="px-2 py-1 rounded-full bg-blue-700 text-white">{feature}</p>
+                            <p className="px-2 py-1 text-white bg-blue-700 rounded-full">{feature}</p>
                         ))}
                       </div>
                     </p>

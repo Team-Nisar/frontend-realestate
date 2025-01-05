@@ -27,8 +27,8 @@ const Login = () => {
     <Layout title={'Login Page'}>
       <div className="flex justify-center items-center w-screen bg-cover h-[90vh] bg-loginBg bg-no-repeat">
       {step === 1 && (
-        <div className="bg-white p-10 flex flex-col gap-3 rounded-2xl">
-          <h2 className='font-semibold text-2xl text-gray-800'>Login to continue</h2>
+        <div className="flex flex-col gap-3 p-10 bg-white rounded-2xl">
+          <h2 className='text-2xl font-semibold text-gray-800'>Login to continue</h2>
           <img src={phone} className='w-[15rem] h-[15rem]'/>
           {/* <div className="radio-buttons">
             <label>
