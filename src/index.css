@@ -1,11 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-[#1111] text-gray-300 ;
+*{
+  font-family: "Outfit";
+}
+
+body{
+  overflow-x: hidden;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  outline: none;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.active{
+  color: white;
+  background: #7065F0;
+  transition:all;
+  transition: background-color 0.3s ease;
 }
 
 @layer components {
@@ -32,17 +54,17 @@ body {
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
   /* display: none; */
 }
 
 *::-webkit-scrollbar-track {
-  background: #000814;
+  background: #EDECFA;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #afb2bf;
-  border-radius: 10px;
+  background-color: #7065F0;
+  border-radius: 15px;
   visibility: hidden;
 }
 
@@ -58,11 +80,4 @@ details > summary {
 }
 details > summary::-webkit-details-marker {
   display: none;
-}
-
-.active{
-  color: white;
-  background: rgb(43, 43, 243);
-  transition:all;
-  transition: background-color 0.3s ease;
 }

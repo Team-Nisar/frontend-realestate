@@ -1,10 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "../Navbar/Navbar"
-
-// Import your Header and Footer components
-// import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "../Footer"
 
 const Layout = ({ title, description, keywords, children }) => {
   return (
@@ -19,40 +16,10 @@ const Layout = ({ title, description, keywords, children }) => {
 
       {/* Page layout structure */}
       <Navbar/>
-      <main
-        style={{
-          minHeight: "calc(100vh - 200px)",
-          padding: "0", // Remove default padding
-          boxSizing: "border-box",
-          width: "100vw", // Use viewport width
-          margin: "0", // Remove margin
-        }}
-      >
+      <main className="min-h-[calc(100vh - 200px)] p-0 m-0 box-border w-screen">
         {children}
       </main>
       <Footer />
-
-      {/* Global responsive styles */}
-      <style jsx>{`
-        main {
-          display: flex;
-          flex-direction: column;
-          align-items: stretch; /* Ensure content spans full width */
-          justify-content: flex-start; /* Align content to the top */
-        }
-
-        @media (max-width: 768px) {
-          main {
-            padding: 0; /* Keep no padding for smaller screens */
-          }
-        }
-
-        @media (max-width: 480px) {
-          main {
-            padding: 0;
-          }
-        }
-      `}</style>
     </>
   );
 };

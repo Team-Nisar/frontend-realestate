@@ -1,35 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundImage: {
-        'banner': "url('./public/assets/Banner.jpg')",
-        'loginBg':"url('./public/assets/loginBg.jpg')", 
-        'registerBg':"url('./public/assets/registerBg.jpg')", 
+        banner: "url('./public/assets/Banner2.jpg')",
+        loginBg: "url('./public/assets/LoginBg2.jpg')",
       },
       colors: {
-        'gold-500': '#ffd700',
-        'gold-600': '#ffc107', 
+        "rich-purple-50":"#E0DEF7",
+        "rich-purple-100": "#7065F0",
+        "rich-purple-200": "#5a4edf",
+        "rich-purple-800": "#403b77",
+        "sup-light-purple": "#EDECFA",
+        "dark-blue": "#100A55",
       },
     },
   },
   plugins: [
-    function({addUtilities}){
+    function ({ addUtilities }) {
       const newUtilities = {
-        ".no-scrollbar::-webkit-scrollbar":{
-          display:"none",
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
         },
         ".no-scrollbar": {
-          "-ms-overflow-style":"none",
-          "scrollbar-width":"none",
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
         },
       };
 
       addUtilities(newUtilities);
-    }
+    },
   ],
-}
+};

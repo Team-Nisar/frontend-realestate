@@ -13,10 +13,10 @@ const Dashboard = () => {
 
   return (
     <Layout title={'Dashboard'}>
-    <div className="dashboard-container">
-      <h1>Welcome to Dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+      <div className="dashboard-container">
+        <h1>Welcome to Dashboard</h1>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
     </Layout>
   );
 };

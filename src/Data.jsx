@@ -1,10 +1,3 @@
-import NewProject from "../public/assets/NewProject.png";
-import BuyProperties from "../public/assets/BuyProperties.png";
-import RentProperties from "../public/assets/RentProperty.png";
-import Hostel from "../public/assets/Hostel.png";
-import Money from "../public/assets/Money.png";
-import CommProperties from "../public/assets/CommProperty.png";
-import Agent from "../public/assets/Agent.png";
 import property1 from "../public/assets/Properties/property1.jpg"
 import property2 from "../public/assets/Properties/property2.jpg"
 import property3 from "../public/assets/Properties/property3.jpg"
@@ -24,7 +17,6 @@ import property15 from "../public/assets/Properties/property15.jpg"
 export const searchBarData = [
   {
     title: "New Project",
-    icon: NewProject,
     firstFilter: {
       firstTitle: "Min",
       min: [
@@ -85,7 +77,7 @@ export const searchBarData = [
   },
   {
     title: "Buy Property",
-    icon: BuyProperties,
+    
     firstFilter: {
       firstTitle: "Min",
       min: [
@@ -146,7 +138,6 @@ export const searchBarData = [
   },
   {
     title: "Rent Property",
-    icon: RentProperties,
     firstFilter: {
       firstTitle: "Min",
       min: [
@@ -207,7 +198,6 @@ export const searchBarData = [
   },
   {
     title: "Hostel/ PG",
-    icon: Hostel,
     firstFilter: {
       firstTitle: "Min",
       min: [
@@ -253,7 +243,6 @@ export const searchBarData = [
   },
   {
     title: "Plots &Land",
-    icon: Money,
     firstFilter: {
       firstTitle: "Min",
       min: [
@@ -298,8 +287,14 @@ export const searchBarData = [
     },
   },
   {
+    title: "Find Agents",
+    firstFilter: {
+      firstTitle: "Choose Agent",
+      min: ["For New Project", "For Resale/Rental"],
+    },
+  },
+  {
     title: "Commercial Properies",
-    icon: CommProperties,
     firstFilter: {
       firstTitle: "Buy/Lease",
       min: ["Buy", "Lease"],
@@ -316,14 +311,6 @@ export const searchBarData = [
         "Warehouse",
         "Co-working Space",
       ],
-    },
-  },
-  {
-    title: "Find Agents",
-    icon: Agent,
-    firstFilter: {
-      firstTitle: "Choose Agent",
-      min: ["For New Project", "For Resale/Rental"],
     },
   },
 ];
