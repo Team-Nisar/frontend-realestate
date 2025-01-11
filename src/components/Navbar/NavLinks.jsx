@@ -32,23 +32,14 @@ const NavLinks = () => {
                 <div className="absolute hidden top-16 group-hover:md:block hover:md:block">
                   <div className="py-3">
                     <div
-<<<<<<< HEAD
                       className="w-4 h-4 left-10 absolute 
                     mt-1 bg-sup-light-purple rotate-45"
-=======
-                      className="absolute w-4 h-4 mt-1 rotate-45 bg-black left-10"
->>>>>>> d2acc133d216635440d187b965f32a966a64106c
                     ></div>
                   </div>
                   <div className={`bg-sup-light-purple mega-menu rounded-xl max-w-7xl min-w-3xl h-[41vh] p-5 flex justify-evenly gap-10`}>
                     {link.sublinks.map((mysublinks) => (
-<<<<<<< HEAD
                       <div className=" ">
                         <h1 className="text-lg text-rich-purple-100 font-semibold">
-=======
-                      <div className="">
-                        <h1 className="text-lg font-semibold">
->>>>>>> d2acc133d216635440d187b965f32a966a64106c
                           {mysublinks.Head}
                         </h1>
                         <div className="overflow-y-scroll h-[90%] pr-5">
@@ -85,19 +76,11 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-<<<<<<< HEAD
                     className="py-4 pl-7 text-rich-purple-100 font-semibold md:pr-0 pr-5 flex justify-between items-center md:pr-0 pr-5"
                   >
                     {slinks.Head}
 
                     <span className="text-2xl md:mt-1 md:ml-2 inline">
-=======
-                    className="flex items-center justify-between py-4 pr-5 font-semibold pl-7 md:pr-0"
-                  >
-                    {slinks.Head}
-
-                    <span className="inline text-xl md:mt-1 md:ml-2">
->>>>>>> d2acc133d216635440d187b965f32a966a64106c
                       {subHeading === slinks.Head ? <FiMinus/> : <FiPlus/>}
                     </span>
                   </h1>
