@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { GoArrowRight } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { LuArrowLeft } from "react-icons/lu";
 
@@ -90,7 +89,7 @@ const Otp = ({ type, number }) => {
         disabled={loading}
       >
         {loading ? "Verifying..." : "Submit OTP"}
-        <GoArrowRight size={20} />
+        <LuArrowLeft className="rotate-180" size={20} />
       </button>
     </div>
   );

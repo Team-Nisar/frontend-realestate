@@ -9,6 +9,6 @@ const queryClient = new QueryClient(); // Initialize a new QueryClient
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>  {/* Wrap App with QueryClientProvider */}
-    <App />
+      <App />
   </QueryClientProvider>
 );
