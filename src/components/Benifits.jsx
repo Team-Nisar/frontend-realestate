@@ -1,4 +1,4 @@
-import CTABtn from "./CTABtn";
+import CTABtn from "./common/CTABtn";
 import HouseVector from "../../public/assets/HouseVector.svg";
 import icon1 from "../../public/assets/IconInsurance.svg";
 import icon2 from "../../public/assets/IconBestPrice.svg";

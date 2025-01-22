@@ -1,18 +1,18 @@
-import property1 from "../public/assets/Properties/property1.jpg"
-import property2 from "../public/assets/Properties/property2.jpg"
-import property3 from "../public/assets/Properties/property3.jpg"
-import property4 from "../public/assets/Properties/property4.jpg"
-import property5 from "../public/assets/Properties/property5.jpg"
-import property6 from "../public/assets/Properties/property6.jpg"
-import property7 from "../public/assets/Properties/property7.jpg"
-import property8 from "../public/assets/Properties/property8.jpg"
-import property9 from "../public/assets/Properties/property9.jpg"
-import property10 from "../public/assets/Properties/property10.jpg"
-import property11 from "../public/assets/Properties/property11.jpg"
-import property12 from "../public/assets/Properties/property12.jpg"
-import property13 from "../public/assets/Properties/property13.jpg"
-import property14 from "../public/assets/Properties/property14.jpg"
-import property15 from "../public/assets/Properties/property15.jpg"
+import property1 from "../../public/assets/Properties/property1.jpg"
+import property2 from "../../public/assets/Properties/property2.jpg"
+import property3 from "../../public/assets/Properties/property3.jpg"
+import property4 from "../../public/assets/Properties/property4.jpg"
+import property5 from "../../public/assets/Properties/property5.jpg"
+import property6 from "../../public/assets/Properties/property6.jpg"
+import property7 from "../../public/assets/Properties/property7.jpg"
+import property8 from "../../public/assets/Properties/property8.jpg"
+import property9 from "../../public/assets/Properties/property9.jpg"
+import property10 from "../../public/assets/Properties/property10.jpg"
+import property11 from "../../public/assets/Properties/property11.jpg"
+import property12 from "../../public/assets/Properties/property12.jpg"
+import property13 from "../../public/assets/Properties/property13.jpg"
+import property14 from "../../public/assets/Properties/property14.jpg"
+import property15 from "../../public/assets/Properties/property15.jpg"
 
 export const searchBarData = [
   {
@@ -321,11 +321,15 @@ export const properties = [
       image:property1,
       name: "Luxury Villa in Beverly Hills",
       location: "Beverly Hills, CA",
-      price: "5,000,000",
+      price: 5000000,
       area: "5000 sq.ft.",
-      bedrooms: 5,
+      propertyType:"Villa",
+      bedrooms: 3,
       bathrooms: 4,
-      features: ["Swimming Pool", "Private Garden", "Modern Design"],
+      BHK:"2BHK",
+      rating:5,
+      status:"Under Construction",
+      amenities: ["Private Garden", "Swimming Pool", "Modern Design"],
       city: "Los Angeles",
     },
     {
@@ -333,11 +337,15 @@ export const properties = [
       image:property2,
       name: "Beachfront Apartment",
       location: "Miami Beach, FL",
-      price: "2,000,000",
+      price: 2000000,
       area: "2500 sq.ft.",
+      propertyType:"Apartment",
       bedrooms: 3,
       bathrooms: 2,
-      features: ["Ocean View", "Balcony", "24/7 Security"],
+      BHK:"1BHK",
+      rating:3,
+      status:"Under Construction",
+      amenities: ["Ocean View", "Balcony", "24/7 Security"],
       city: "Miami",
     },
     {
@@ -345,11 +353,15 @@ export const properties = [
       image:property3,
       name: "Penthouse in Manhattan",
       location: "Manhattan, NY",
-      price: "8,000,000",
+      price: 8000000,
       area: "4000 sq.ft.",
+      propertyType:"Penthouse",
       bedrooms: 4,
       bathrooms: 3,
-      features: ["Skyline View", "Private Elevator", "Luxury Finishes"],
+      BHK:"3BHK",
+      rating:1,
+      status:"Ready to Move",
+      amenities: ["Skyline View", "Private Elevator", "Luxury Finishes"],
       city: "New York",
     },
     {
@@ -357,11 +369,15 @@ export const properties = [
       image:property4,
       name: "Modern House in San Francisco",
       location: "San Francisco, CA",
-      price: "3,500,000",
+      price: 3500000,
       area: "3000 sq.ft.",
+      propertyType:"Independent House",
       bedrooms: 4,
       bathrooms: 4,
-      features: ["Rooftop Terrace", "Eco-friendly", "Open Plan"],
+      BHK:"4BHK",
+      rating:4,
+      status:"Under Construction",
+      amenities: ["Rooftop Terrace", "Eco-friendly", "Open Plan"],
       city: "San Francisco",
     },
     {
@@ -369,11 +385,15 @@ export const properties = [
       image:property5,
       name: "Historic Mansion in London",
       location: "London, UK",
-      price: "10,000,000",
+      price: 10000000,
       area: "6000 sq.ft.",
+      propertyType:"Office Space",
       bedrooms: 6,
       bathrooms: 5,
-      features: ["Private Garden", "Gated Entrance", "Library"],
+      BHK:"5BHK",
+      rating:5,
+      status:"Ready to Move",
+      amenities: ["Private Garden", "Gated Entrance", "Library"],
       city: "London",
     },
     {
@@ -381,11 +401,15 @@ export const properties = [
       image:property6,
       name: "Stylish Loft in Paris",
       location: "Paris, France",
-      price: "2,500,000",
+      price: 2500000,
       area: "2000 sq.ft.",
+      propertyType:"Independent House",
       bedrooms: 2,
       bathrooms: 2,
-      features: ["Eiffel Tower View", "High Ceilings", "Balcony"],
+      BHK:"1RK",
+      rating:1,
+      status:"Ready to Move",
+      amenities: ["Eiffel Tower View", "High Ceilings", "Balcony"],
       city: "Paris",
     },
     {
@@ -393,11 +417,15 @@ export const properties = [
       image:property7,
       name: "Country Estate in Tuscany",
       location: "Tuscany, Italy",
-      price: "7,500,000",
+      price: 7500000,
       area: "8000 sq.ft.",
+      propertyType:"Plot",
       bedrooms: 7,
       bathrooms: 6,
-      features: ["Vineyard", "Olive Grove", "Historic Charm"],
+      BHK:"6BHK",
+      rating:3,
+      status:"Ready to Move",
+      amenities: ["Vineyard", "Olive Grove", "Historic Charm"],
       city: "Florence",
     },
     {
@@ -405,11 +433,15 @@ export const properties = [
       image:property8,
       name: "Contemporary Apartment in Berlin",
       location: "Berlin, Germany",
-      price: "1,800,000",
+      price: 1800000,
       area: "1500 sq.ft.",
+      propertyType:"Land",
       bedrooms: 2,
       bathrooms: 1,
-      features: ["City Views", "Private Balcony", "Modern Design"],
+      BHK:"1BHK",
+      rating:2,
+      status:"Ready to Move",
+      amenities: ["City Views", "Private Balcony", "Modern Design"],
       city: "Berlin",
     },
     {
@@ -417,11 +449,15 @@ export const properties = [
       image:property9,
       name: "Secluded Cabin in Aspen",
       location: "Aspen, CO",
-      price: "4,200,000",
+      price: 4200000,
       area: "3500 sq.ft.",
+      propertyType:"Apartment",
       bedrooms: 4,
       bathrooms: 3,
-      features: ["Mountain Views", "Hot Tub", "Ski-In/Ski-Out"],
+      BHK:"3BHK",
+      rating:5,
+      status:"Ready to Move",
+      amenities: ["Mountain Views", "Hot Tub", "Ski-In/Ski-Out"],
       city: "Aspen",
     },
     {
@@ -429,11 +465,15 @@ export const properties = [
       image: property10,
       name: "Oceanfront Villa in Malibu",
       location: "Malibu, CA",
-      price: "12,000,000",
+      price: 12000000,
       area: "7000 sq.ft.",
+      propertyType:"Villa",
       bedrooms: 5,
       bathrooms: 5,
-      features: ["Infinity Pool", "Beach Access", "Gourmet Kitchen"],
+      BHK:"5BHK",
+      rating:4,
+      status:"Ready to Move",
+      amenities: ["Infinity Pool", "Beach Access", "Gourmet Kitchen"],
       city: "Malibu",
     },
     {
@@ -441,11 +481,15 @@ export const properties = [
       image: property11,
       name: "Downtown Condo in Chicago",
       location: "Chicago, IL",
-      price: "1,000,000",
+      price: 1000000,
       area: "1500 sq.ft.",
+      propertyType:"Builder Floor",
       bedrooms: 2,
       bathrooms: 2,
-      features: ["City View", "Modern Kitchen", "Fitness Center"],
+      BHK:"4BHK",
+      rating:2,
+      status:"Ready to Move",
+      amenities: ["City View", "Modern Kitchen", "Fitness Center"],
       city: "Chicago",
     },
     {
@@ -453,11 +497,15 @@ export const properties = [
       image: property12,
       name: "Mountain Lodge in Colorado",
       location: "Vail, CO",
-      price: "6,000,000",
+      price: 6000000,
       area: "5000 sq.ft.",
+      propertyType:"Showroom",
       bedrooms: 5,
       bathrooms: 4,
-      features: ["Ski Resort", "Sauna", "Outdoor Deck"],
+      BHK:"1BHK",
+      rating:4,
+      status:"Ready to Move",
+      amenities: ["Ski Resort", "Sauna", "Outdoor Deck"],
       city: "Vail",
     },
     {
@@ -465,11 +513,15 @@ export const properties = [
       image: property13,
       name: "Luxury Apartment in Tokyo",
       location: "Tokyo, Japan",
-      price: "4,500,000",
+      price: 4500000,
       area: "3000 sq.ft.",
+      propertyType:"Apartment",
       bedrooms: 4,
       bathrooms: 3,
-      features: ["Panoramic Views", "Smart Home", "Rooftop Garden"],
+      BHK:"2BHK",
+      rating:1,
+      status:"Ready to Move",
+      amenities: ["Panoramic Views", "Smart Home", "Rooftop Garden"],
       city: "Tokyo",
     },
     {
@@ -477,11 +529,15 @@ export const properties = [
       image: property14,
       name: "Beachfront Villa in Bali",
       location: "Bali, Indonesia",
-      price: "3,200,000",
+      price: 3200000,
       area: "4000 sq.ft.",
+      propertyType:"Villa",
       bedrooms: 4,
       bathrooms: 4,
-      features: ["Private Pool", "Beach Access", "Tropical Garden"],
+      BHK:"6BHK",
+      rating:3,
+      status:"Ready to Move",
+      amenities: ["Private Pool", "Beach Access", "Tropical Garden"],
       city: "Denpasar",
     },
     {
@@ -489,11 +545,15 @@ export const properties = [
       image: property15,
       name: "Charming Cottage in the Hamptons",
       location: "Hamptons, NY",
-      price: "2,800,000",
+      price: 2800000,
       area: "2200 sq.ft.",
+      propertyType:"Warehouse",
       bedrooms: 3,
       bathrooms: 2,
-      features: ["Private Garden", "Wooded Area", "Charming Interior"],
+      BHK:"6BHK",
+      rating:5,
+      status:"Ready to Move",
+      amenities: ["Private Garden", "Wooded Area", "Charming Interior"],
       city: "East Hampton",
     },
   ];

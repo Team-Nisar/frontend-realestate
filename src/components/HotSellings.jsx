@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { properties } from "../Data";
+import { properties } from "../Data/Data";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import CTABtn from "../components/common/CTABtn"
 import { GrLocation, GrOrganization  } from "react-icons/gr";
 import { BiRupee } from "react-icons/bi";
 import { MdOutlineLocalHotel } from "react-icons/md";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { LuArrowLeft } from "react-icons/lu";
 
 // Import Swiper styles
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 const cities = [
   "All Cities",
@@ -118,6 +121,13 @@ const HotSellings = () => {
               ))}
             </Swiper>
           </div>
+        </div>
+        <div className="mb-10 w-full flex justify-center items-center">
+          <Link to={"/property-list"}>
+            <div className="w-[10rem]">
+              <CTABtn title={"Browse More"} icon={<LuArrowLeft size={18} className="rotate-180"/>} iconPosition={"right"} bg={"dark-blue"} text={"white"}/>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

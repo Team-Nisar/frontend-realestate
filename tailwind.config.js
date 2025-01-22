@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundImage: {
         banner: "url('./public/assets/Banner2.jpg')",
-        loginBg: "url('./public/assets/LoginBg2.jpg')",
+        loginBg: "url('./public/assets/LoginBg.jpg')",
+        registerBg: "url('./public/assets/registerBg.jpg')",
       },
       colors: {
         "rich-purple-50":"#E0DEF7",

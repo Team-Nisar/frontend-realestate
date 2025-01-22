@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "../Navbar/Navbar"
-import Footer from "../Footer"
+import Footer from "../common/Footer"
 
 const Layout = ({ title, description, keywords, children }) => {
   return (
