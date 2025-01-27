@@ -1,92 +1,91 @@
 import React, { useState } from "react";
-import Otp from "./Otp";
-import { GoArrowRight } from "react-icons/go";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuArrowLeft } from "react-icons/lu";
-import CTABtn from "../../components/CTABtn"
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
+import CTABtn from "../../components/common/CTABtn";
+import { PiEyeDuotone, PiEyeSlashDuotone } from "react-icons/pi";
 
 const Login = () => {
-  const [step, setStep] = useState(1);
-  const [userType, setUserType] = useState("Individual");
-  const [formData, setFormData] = useState({ number: "", country: "+91" });
-
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const submitNumber = () => {
-    if (formData.number) {
-      setStep(2);
-    } else {
-      alert("Please enter your mobile number.");
-    }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(formData);
   };
 
   return (
-    // <Layout title={'Login Page'}>
     <>
-      {step === 1 && (
-        <div className="bg-white p-10 flex flex-col gap-3 rounded-2xl">
-          <div className="flex gap-3 mb-10">
-            <div
-              className="p-2 flex justify-center items-center rounded-full bg-[#00000044]"
-              onClick={() => navigate(-1)}
-            >
-              <LuArrowLeft size={20} />
-            </div>
-            <h2 className="font-semibold text-2xl text-gray-800">
-              Login to continue
-            </h2>
-          </div>
-          <div className="flex gap-2 text-gray-600">
-            <select
-              name="country"
-              value={formData.country}
-              onChange={handleInputChange}
-              className="w-[30%] py-2.5 border-2 rounded-lg"
-            >
-              <option value="+91">🇮🇳 +91</option>
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              {/* Add more country codes and flags as needed */}
-            </select>
+      <div className="bg-white sm:w-[70%] md:w-[60%] lg:w-[65%] flex flex-col mt-5 gap-3">
+        <form
+          onSubmit={submitHandler}
+          className="flex flex-col gap-3 text-gray-600"
+        >
+          <label className="w-full">
+            <p className="text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              Email Address <sup className="text-rose-500">*</sup>
+            </p>
             <input
-              type="text"
-              name="number"
-              placeholder="Enter your mobile number"
-              value={formData.number}
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={formData.email}
               onChange={handleInputChange}
-              className="border-2 rounded-lg"
+              className="border-2 py-2.5 rounded-lg"
             />
-          </div>
-          <button
-            className="w-full flex gap-2 justify-center items-center bg-rich-purple-100 text-white py-2.5 rounded-lg"
-            onClick={submitNumber}
-          >
-            Submit <GoArrowRight size={20} />
-          </button>
-          <div className="relative text-gray-400 my-3">
-            <div className="absolute -top-3 px-2 left-[50%] translate-x-[-50%] bg-white">OR</div>
-            <div className="border-t-2"></div>
-          </div>
-          <div className="flex gap-2 justify-start w-full text-dark-blue">
-            <CTABtn title={"Google"} link={"/"} bg={"rich-purple-50"} icon={<FcGoogle size={20}/>} text={"dark-blue"}/>
-            <CTABtn title={"Facebook"} link={"/"} bg={"rich-purple-50"} icon={<FaFacebook size={20} className="text-blue-600"/>} text={"dark-blue"}/>
-          </div>
-          <div className="text-gray-600 text-sm">
-            If You Are New Then Please Register ....
-            <a href="/register" className="text-rich-purple-200">Click Here</a>
-          </div>
+          </label>
+          <label className="relative">
+            <p className="text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              Password <sup className="text-rose-500">*</sup>
+            </p>
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="border-2 py-2.5 rounded-lg"
+            />
+            <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-9 text-gray-500 z-[10] cursor-pointer"
+            >
+              {showPassword ? (
+                <PiEyeDuotone fontSize={20} />
+              ) : (
+                <PiEyeSlashDuotone fontSize={20} />
+              )}
+            </span>
+            <Link to="/forgot-password">
+              <p className="mt-1 ml-auto max-w-max text-xs text-dark-blue">
+                Forgot Password
+              </p>
+            </Link>
+          </label>
+          <CTABtn
+            title={"Login"}
+            icon={<LuArrowLeft size={18} className="rotate-180" />}
+            iconPosition={"right"}
+            bg={"rich-purple-100"}
+            text={"white"}
+          />
+        </form>
+
+        <div className="text-gray-600 text-sm">
+          If You Are New Then Please Register ....
+          <a href="/register" className="text-rich-purple-200">
+            Click Here
+          </a>
         </div>
-      )}
-      {step === 2 && (
-        <Otp type="Signin" number={`${formData.country}${formData.number}`} />
-      )}
+      </div>
     </>
     // </Layout>
   );

@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/user/Dashboard';
 import HomePage from './pages/HomePage';
 import HotSellings from './components/HotSellings';
+import PropertyListPage from './pages/PropertyListPage';
 
 const App = () => {
   const isAuthenticated = localStorage.getItem('token');
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/hotselling" element={<HotSellings/>}/>
+          <Route path="/property-list" element={<PropertyListPage/>}/>
           <Route
             path="/dashboard"
             element={
